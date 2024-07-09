@@ -215,3 +215,48 @@ footer nav ul {
 .gallery span{
 	display: none;
 }
+
+/* Page de connection */
+.login {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 30px;
+}
+.login h2{
+	margin-bottom: 40px;
+}
+
+.login-connexion input{
+	display: flex;
+	flex-direction: column;
+	width: 379px;
+	height: 50px;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+.login-connexion input[type="submit"] {
+	box-shadow: none;
+	width: 179px;
+	height: 36px;
+	margin: auto;
+}
+
+.password{
+	margin-top: 20px;
+}
+.password a{
+	color: #1D6154;
+}
+
+.login-connexion .formulaire{
+	margin-bottom: 40px;
+}
+.formulaire input{
+	margin-top: 10px;
+}
+.formulaire span{
+	display: none;
+	color: red;
+}

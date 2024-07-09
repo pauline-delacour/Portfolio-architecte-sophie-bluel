@@ -88,9 +88,9 @@ function filterCategorie(catId){
    console.log(filtrerWork)
 
    const worksContainer = document.querySelector(".gallery");
-   for (let i = 0; i < filtrerWork.length; i++){
-       const article = filtrerWork[i];
+   /*for (let i = 0; i < filtrerWork.length; i++){
        
+        const article = filtrerWork[i];
        const figureElement = document.createElement("figure");
        const imageElement = document.createElement("img");
        imageElement.src = article.imageUrl;
@@ -99,11 +99,24 @@ function filterCategorie(catId){
        figureElement.appendChild(imageElement);
        figureElement.appendChild(titreElement);
        worksContainer.appendChild(figureElement);
-   }
+   }*/
+  filtrerWork.forEach((element,index) => {
+    const article = filtrerWork[index];
+    const figureElement = document.createElement("figure");
+    const imageElement = document.createElement("img");
+    imageElement.src = article.imageUrl;
+    const titreElement = document.createElement("figcaption");
+    titreElement.innerText = article.title;
+    figureElement.appendChild(imageElement);
+    figureElement.appendChild(titreElement);
+    worksContainer.appendChild(figureElement);
+    console.log(element)
+  })
+  
 
-    works.forEach((element) => {
+    works.forEach((element, index) => {
         //console.log(element)
-        //console.log(element.categoryId)
+        console.log(index)
         if (element.categoryId == catId){
             console.log(`element à afficher ${element.id}`)
         } else {
@@ -115,7 +128,7 @@ function filterCategorie(catId){
 
 insertCategoriesInTheDom();
 
-function testButton(){
+/*function testButton(){
     const element = document.getElementById("introduction");
     const button = document.createElement('button');
     console.log(element)
@@ -127,7 +140,7 @@ function testButton(){
 }
 document.addEventListener('DOMContentLoaded', function () {
 testButton();
-})
+})*/
   
 
 
