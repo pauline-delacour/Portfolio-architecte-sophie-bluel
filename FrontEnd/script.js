@@ -142,10 +142,53 @@ document.addEventListener('DOMContentLoaded', function () {
 testButton();
 })*/
   
+/* Modal galerie */
+let modal = null;
+/* fonction qui permet d'ouvrir la modal*/
+const openModal = function (e) {
+    e.preventDefault()
+    const target = document.querySelector(e.target.getAttribute('href'));
+    target.style.display = null;
+    target.removeAttribute('aria-hidden');
+    target.setAttribute('aria-modal', 'true');
+    modal = target;
+    modal.addEventListener('click', closeModal);
+    modal.querySelector('.js-close-modal').addEventListener('click', closeModal);
+    modal.querySelector('.js-modal-stop').addEventListener('click', stopPropagation)
+    afficherWorksModal()
+}
+/* fonction qui permet d'afficher les images dans la modal */
+function  afficherWorksModal(){
+    const modalGallery = document.querySelector('.modal-gallery');
+    document.querySelector(".modal-gallery").innerHTML = "";
+    works.forEach((element) => {
+    const imageElement = document.createElement("img");
+    imageElement.src = element.imageUrl;
+    modalGallery.appendChild(imageElement);
+    })
+} 
 
-
-
-
+/* fonction qui permet de quitter la modal */
+const closeModal = function (e) {
+    if (modal === null) return
+    e.preventDefault()
+    const target = document.querySelector(e.target.getAttribute('href'));
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+    modal.removeAttribute('aria-modal');
+    modal.removeEventListener('click', closeModal);
+    modal.querySelector('.js-close-modal').removeEventListener('click', closeModal);
+    modal.querySelector('.js-modal-stop').removeEventListener('click', stopPropagation);
+    modal = null
+    
+}
+/* permet de ne pas quitter la modal au click a l'interieur de celle ci */
+const stopPropagation = function(e){
+    e.stopPropagation()
+}
+document.querySelectorAll('.js-modal').forEach(lien => {
+    lien.addEventListener('click', openModal)
+})
 
 
 

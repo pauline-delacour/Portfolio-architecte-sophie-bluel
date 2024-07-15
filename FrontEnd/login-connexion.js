@@ -41,4 +41,3 @@ document.querySelector('.login-connexion').addEventListener('submit', async func
             console.log('echec de connexion')
         }
 });
-
