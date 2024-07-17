@@ -350,3 +350,33 @@ footer nav ul {
 	width: 76px;
 	height: 102px;
 }
+
+.modal-gallery figure {
+	position: relative;
+	display: inline-block;
+}
+
+.modal-gallery img {
+	display: block;
+}
+.icon-delete {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 5px;
+	right: 5px;
+	width: 17px;
+	height: 17px;
+	background-color: #000000;
+	border-radius: 5px;
+	cursor: pointer;
+	z-index: 10;
+	color: #FFFFFF;
+}
+.icon-delete i {
+	font-size: 11px;
+}
+
+/* mode Edition */
+
