@@ -14,8 +14,8 @@
 </head>
 <body>
 <header>
-	<div class="mode-edition">
-		<a href="#modeEdit"><i class="fa-regular fa-pen-to-square" ></i>Mode édition</a>
+	<div class="mode-edition" style="display: none;">
+		<a href="#modeEdit"><i class="fa-regular fa-pen-to-square" ></i> Mode édition</a>
 	</div>
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
@@ -44,7 +44,7 @@
 			<h2>Mes Projets</h2>
 			<a href="#modal1" class="js-modal" style="display: none;"><i class="fa-regular fa-pen-to-square" ></i> Modifier </a>
 			<aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="titlemodal" style="display: none;">
-				<div class="modal-wrapper js-modal-stop">
+				<div class="modal-main modal-wrapper js-modal-stop">
 					<button class="js-close-modal"><i class="fa-solid fa-xmark"></i></button>
 					<h3 id="titlemodal">Galerie Photo</h3>
 					<div class="modal-gallery">
@@ -52,7 +52,33 @@
 					</div>
 					<button class="photo-btn">Ajouter une photo</button>
 				</div>
-				
+				<div class="modal-formulaire modal-wrapper js-modal-stop" style="display: none;">
+					<button class="js-close-modal"><i class="fa-solid fa-xmark"></i></button>
+					<button  id="retour"  class="retour-modal-main"><i class="fa-solid fa-arrow-left"></i></button>
+					<h3>Ajout Photo</h3>
+					<form id="add-photo">
+						<div>
+							<label for="photo">photo</label>
+							<input type="file" id="photo" name="photo" accept="image/*" required>
+						</div>
+						<div>
+							<label for="title">Titre </label>
+							<input type="text" id="title" name="title" required>
+						</div>
+						<div>
+							<label for="category">Categories</label>
+							<select id="category" name="category" required>
+								<option value=""></option>
+								<option value="1">Objets</option>
+								<option value="2">Appartements</option>
+								<option value="3">Hotels & restaurants</option>
+							</select>
+						</div>
+						<div class="button-container">
+							<button class="photo-btn" type="submit">Valider</button>
+						</div>
+					</form>
+				</div>
 			</aside>
 		</div>	
 		<div class="filtre">

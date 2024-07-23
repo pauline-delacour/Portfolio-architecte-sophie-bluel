@@ -186,6 +186,19 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
+/* Navbar */
+
+header nav img {
+	height: 22px;
+	width: 22px;
+}
+
+header li a:link,
+header li a:visited,
+header li a:active {
+	text-decoration: none;
+	color: #000000;
+}
 
 /*Filtre*/ 
 .filtre{
@@ -377,6 +390,84 @@ footer nav ul {
 .icon-delete i {
 	font-size: 11px;
 }
+/* modal ajout photo */
+.retour-modal-main {
+	position: absolute;
+	top: 30px;
+	left: 30px;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
 
-/* mode Edition */
+.retour-modal-main i {
+	height: 21px;
+	width: 21px;
+	font-size: 24px;
+}
+.modal-formulaire .js-close-modal i {
+	font-size: 18px;
+}
 
+#add-photo {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+#add-photo .button-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	margin-top: 55%;
+}
+.modal-formulaire {
+	justify-content: center;
+	flex-direction: column;
+}
+.modal-formulaire button[type="submit"]{
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #B3B3B3;
+	width: 237px;
+	height: 36px;
+	text-align: center;
+	border-radius: 60px ;
+}
+#title {
+	width: 100%;
+	max-width: 420px;
+	height: 51px;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border-radius: 10px;
+}
+#category {
+	width: 100%;
+	max-width: 420px;
+	height: 51px;
+	border: none;
+	background-color: transparent;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+/* mode Edition  headdband noir */
+.mode-edition{
+	display: flex;
+	position: fixed;
+	justify-content: center;
+	align-items: center;
+	background: #000000;
+	width: 100%;
+	height: 59px;
+	top: 0;
+	right: 0;
+	color: #FFFEF8;
+}
+
+.mode-edition a {
+	display: inline-block;
+	text-align: center;
+	color: #FFFEF8;
+}
