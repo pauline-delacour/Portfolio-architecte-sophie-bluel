@@ -56,11 +56,12 @@ body {
 }
 header {
 	display: flex;
+	position: relative;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px 0;
 }
 section {
-	margin: 50px 0
+	margin: 100px 0;
 }
 
 h1{
@@ -104,7 +105,8 @@ li:hover {
 	align-items: center;
 }
 #introduction figure {
-	flex: 1
+	flex: 1;
+	padding-left: 40px
 }
 #introduction img {
 	display: block;
@@ -113,7 +115,8 @@ li:hover {
 }
 
 #introduction article {
-	flex: 1
+	flex: 1;
+	padding-right: 70px;
 }
 #introduction h2 {
 	margin-bottom: 1em;
@@ -129,13 +132,15 @@ li:hover {
 .gallery {
 	width: 100%;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 305px 305px 305px;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
+	padding-left: 90px;
 }
 
 .gallery img {
-	width: 100%;
+	width: 305px;
+	height: 407px;
 
 }
 #contact {
@@ -206,7 +211,7 @@ header li a:active {
 	justify-content: center;
 	align-items: center;
 	gap: 10px;
-	margin:50px 0px 50px 0px;
+	margin-bottom: 50px;
 }
 .filtre button{
 	border-radius: 60px;
@@ -255,7 +260,9 @@ header li a:active {
 	height: 36px;
 	margin: auto;
 }
-
+#navLogin{
+	font-weight: bold;
+}
 .password{
 	margin-top: 20px;
 }
@@ -277,6 +284,7 @@ header li a:active {
 .projet {
 	display: flex;
 	justify-content: center;
+	margin-bottom: 50px;
 }
 .projet a {
 	margin-left: 20px;
@@ -309,6 +317,12 @@ header li a:active {
 	padding: 20px;
 	box-sizing: border-box;
 }
+.js-modal{
+	text-decoration: none;
+}
+.edition{
+	text-decoration: none;
+}
 .js-close-modal{
 	position: absolute;
 	top: 30px;
@@ -335,8 +349,7 @@ header li a:active {
 }
 .photo-btn{
 	align-self: center;
-	margin-top: auto;
-	margin-bottom: 20px;
+	margin-top: 30px;
 	padding: 10px 20px;
 	cursor: pointer;
 	background-color: #1D6154;
@@ -346,11 +359,12 @@ header li a:active {
 	width: 237px;
 	font-size: 14px;
 	font-weight: bold;
+	position: relative;
+	top: -9px;
 }
 .modal-gallery {
 	display: grid;
-	overflow: auto;
-	margin-top: 120px;
+	margin-top: 130px;
 	padding-bottom: 60px;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	gap: 10px;
@@ -413,14 +427,67 @@ header li a:active {
 	display: flex;
 	flex-direction: column;
 	gap: 30px;
+	margin-top: 50px;
 }
 
 #add-photo .button-container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	position: absolute;
-	margin-top: 55%;
+	position: relative;
+	top: 25px;
+	border-top: 1px solid #B3B3B3;
+}
+#valid-image{
+	align-self: center;
+	margin-top: 30px;
+	padding: 10px 20px;
+	cursor: pointer;
+	background-color: #B3B3B3;
+	color: #FFFEF8;
+	border-radius: 60px;
+	border: none;
+	width: 237px;
+	font-size: 14px;
+	font-weight: bold;
+}
+.ajout-photo{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #e8f1f6;
+	width: 420px;
+	height: 169px;
+}
+.ajout-photo i.fa-solid {
+	font-size: 76px;
+	color: #B9C5CC;
+	margin-bottom: 5px;
+}
+.ajout-photo input[type="file"] {
+	display: none;
+}
+.style-addphoto{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color:  #B9C5CC;
+	width: 173px;
+	height: 36px;
+	color: #306685;
+	cursor: pointer;
+	font-size: 14px;
+	text-align: center;
+	border-radius: 50px;
+	margin-bottom: 30px;
+}
+.custom-label{
+	margin-bottom: 10px;
+}
+#preview{
+	height: 169px;
+	width: 129px;
 }
 .modal-formulaire {
 	justify-content: center;
@@ -442,7 +509,7 @@ header li a:active {
 	height: 51px;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-	border-radius: 10px;
+	margin-top: 10px;
 }
 #category {
 	width: 100%;
@@ -451,11 +518,13 @@ header li a:active {
 	border: none;
 	background-color: transparent;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	margin-top: 10px;
 }
+
 /* mode Edition  headdband noir */
 .mode-edition{
-	display: flex;
 	position: fixed;
+	z-index: 999;
 	justify-content: center;
 	align-items: center;
 	background: #000000;
@@ -470,4 +539,7 @@ header li a:active {
 	display: inline-block;
 	text-align: center;
 	color: #FFFEF8;
+}
+.header-top {
+	margin-top: 20px;
 }

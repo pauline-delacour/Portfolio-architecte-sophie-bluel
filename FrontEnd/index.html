@@ -14,11 +14,11 @@
 </head>
 <body>
 <header>
-	<div class="mode-edition" style="display: none;">
-		<a href="#modeEdit"><i class="fa-regular fa-pen-to-square" ></i> Mode édition</a>
+	<div class="mode-edition" id="mode-edition" style="display: none;">
+		<a href="#modeEdit" class="edition"><i class="fa-regular fa-pen-to-square" ></i> Mode édition</a>
 	</div>
-	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-	<nav>
+	<h1 class="header-top">Sophie Bluel <span>Architecte d'intérieur</span></h1>
+	<nav class="header-top">
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
@@ -57,25 +57,22 @@
 					<button  id="retour"  class="retour-modal-main"><i class="fa-solid fa-arrow-left"></i></button>
 					<h3>Ajout Photo</h3>
 					<form id="add-photo">
-						<div>
-							<label for="photo">photo</label>
-							<input type="file" id="photo" name="photo" accept="image/*" required>
+						
+						<div class="ajout-photo">
+							<i class="fa-solid fa-image" id="icone-photo"></i>
+							<label class="style-addphoto" for="image">+ Ajouter photo</label>
+							<input type="file" id="image" name="image" accept="image/*" required>
+							<img id="preview" src="#" alt="image preview" style="display: none;" >
 						</div>
 						<div>
-							<label for="title">Titre </label>
+							<label class="custom-label" for="title">Titre </label>
 							<input type="text" id="title" name="title" required>
 						</div>
-						<div>
-							<label for="category">Categories</label>
-							<select id="category" name="category" required>
-								<option value=""></option>
-								<option value="1">Objets</option>
-								<option value="2">Appartements</option>
-								<option value="3">Hotels & restaurants</option>
-							</select>
+						<div id="selectCategory">
+							<label class="custom-label" for="category">Categories</label>
 						</div>
 						<div class="button-container">
-							<button class="photo-btn" type="submit">Valider</button>
+							<button id="valid-image" type="submit">Valider</button>
 						</div>
 					</form>
 				</div>

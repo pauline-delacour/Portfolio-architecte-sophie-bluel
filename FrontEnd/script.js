@@ -1,6 +1,7 @@
 let works = [];
+let categories = [];
 /**
- * Fonction asynchrone , récupére les works depuis une API
+ * FONCTION ASYNCHRONE , RÉCUPÉRE LES WORKS DEPUIS UNE API
  *
  * @returns{Promise} - promesse qui se résout avec les données JSON
  *
@@ -11,13 +12,13 @@ async function getWorks() {
   return works;
 }
 /**
- * Création des élements que compose la gallery
- *
+ * CRÉATION DES ÉLÉMENTS QUI COMPOTE LA GALLERY
  */
 
-async function insertWorksInTheDom() {
+function insertWorksInTheDom() {
   // works = await getWorks();
   const worksContainer = document.querySelector(".gallery");
+  worksContainer.innerHTML = "";
   for (let i = 0; i < works.length; i++) {
     const article = works[i];
     //création élément figure
@@ -33,11 +34,9 @@ async function insertWorksInTheDom() {
     worksContainer.appendChild(figureElement);
   }
 }
-//insertWorksInTheDom();
 
 /**
- * fonction asynchrone, récupére Catégories depuis l'API
- *
+ * FONCTION ASYNCHRONE, RÉCUPÉRE LES CATEGORIES DEPUIS L'API
  * @returns{promise}
  *
  */
@@ -47,12 +46,10 @@ async function getCategories() {
   return categories;
 }
 /**
- * Fonction qui permet de creer les éléments que compose les filtres qui contient les categories et qui sont inséré dans le DOM
- *
+ * FONCTION QUI PERMET DE CREER LES ÉLÉMENTS FILTRES QUI CONTIENT LES CATÉGORIES ET ENSUITE INSÉRÉ DANS LE DOM
  *
  */
-async function insertCategoriesInTheDom() {
-  const categories = await getCategories();
+function insertCategoriesInTheDom() {
   const divFiltre = document.querySelector(".filtre");
   //création d'un élément bouton
   const buttonTous = document.createElement("button");
@@ -82,8 +79,10 @@ async function insertCategoriesInTheDom() {
     });
   }
 }
+
 /**
- * Fonction qui permet de filtrer les works en fonction de leurs ID
+ * FONCTION QUI PERMET DE FILTRER LES WORLS EN FONCTION DE LEURS ID
+ *
  * @param {number} catId
  */
 function filterCategorie(catId) {
@@ -131,9 +130,11 @@ function filterCategorie(catId) {
   });
 }
 
-insertCategoriesInTheDom();
+/**
+ * BUTTON TEST
+ */
 
-function testButton() {
+/*function testButton() {
   const element = document.getElementById("introduction");
   const button = document.createElement("button");
   console.log(element);
@@ -141,16 +142,16 @@ function testButton() {
   element.appendChild(button);
   button.addEventListener("click", () => {
     console.log(works);
-    postTest();
+    //postTest();
   });
-}
-document.addEventListener("DOMContentLoaded", function () {
-  testButton();
-});
+}*/
+//document.addEventListener("DOMContentLoaded", function () {
+//testButton();
+//});
 
 let modal = null;
 /**
- *fonction qui permet d'ouvrir la modal
+ *fFONCTION QUI PERMET D'OUVRIR LA MODAL
  * @param {e}
  */
 const openModal = function (e) {
@@ -170,7 +171,8 @@ const openModal = function (e) {
   afficherWorksModal();
 };
 /**
- * fonction qui permet d'afficher les images dans la modal
+ * FONCTION QUI PERMET D'AFFICHER LES PHOTOS DANS LA MODAL
+ *
  */
 function afficherWorksModal() {
   const modalGallery = document.querySelector(".modal-gallery");
@@ -193,7 +195,7 @@ function afficherWorksModal() {
     iconDelete.addEventListener("click", (e) => {
       const workId = e.target.parentElement.getAttribute("workId");
       console.log(iconDelete);
-      /*e.preventDefault();*/
+      e.preventDefault();
       deleteImage(workId);
     });
 
@@ -203,7 +205,7 @@ function afficherWorksModal() {
   });
 }
 /**
- * Fonction qui permet de supprimer les photos depuis la modal
+ * FONCTION QUI PERMET DE SUPPRIMER LES PHOTOS DEPUIS LA MODAL
  *
  * @param{number} workId -l'identifiant de la photo a supprimer
  * @function
@@ -222,13 +224,16 @@ async function deleteImage(workId) {
       },
     });
     console.log(response);
+    works = await getWorks();
+    insertWorksInTheDom();
+    afficherWorksModal();
   } catch (error) {
     console.log(error);
   }
 }
 
 /**
- * Fermer la modal actuellement ouverte
+ * FERMER LA MODAL
  * @param {Event} e
  * @function
  */
@@ -249,22 +254,23 @@ const closeModal = function (e) {
   modal = null;
 };
 /**
- *Empecher de ne pas quitter la modal au click a l'interieur de celle ci
+ *EMPECHER DE QUITTER LA MODAL AU CLICK A L'INTERIEUR
+ *
  *@param {Event} e
  */
 const stopPropagation = function (e) {
   e.stopPropagation();
 };
 /**
- * Ajout d'un écouteur d'évenement pour ouvrir la modal sur tous les éléments avec la classe ".js-modal"
+ * AJOUT D'UN ÉCOUTEUR D'ÊVENEMENT POUR OUVRIR LA MODAL SUR TOUS LES ÉLEMENTS AVEC LA CLASSE ".js-modal"
+ *
  */
 document.querySelectorAll(".js-modal").forEach((lien) => {
   lien.addEventListener("click", openModal);
 });
 
 /**
- * lorsque l'utilisateur est connecté , affichage du handband, du boutton modifier et supprime les fitres
- *
+ *LORSQUE L'UTILISATEUR EST CONNECTÉ, AFFICHAGE DU HEADBAND, DU BOUTON MODIFIER ET CACHE LES FILTRES
  *
  */
 const loginUser = () => {
@@ -287,73 +293,19 @@ const loginUser = () => {
     // Affiche la bande édition
     const headBand = document.querySelector(".mode-edition");
     headBand.style.display = "flex";
+    // nav bar
+    const navbar = document.querySelector("nav ul");
+    const styleh1 = document.querySelector("h1");
+    navbar.style.paddingTop = "30px";
+    styleh1.style.paddingTop = "30px";
   }
 };
 loginUser();
 
 /**
- *  Add a new works *
- *
- * To do list :
- * - Lorsque l'on clique sur ajouter une photo => pouvoir ajouter une nouvelle image , un titre et selectionner une catégorie
- * - un formulaire - OK
- * - creer un post
- * - API http://localhost:5678/api/works
- * - utilisation try/catch
- * - application/json
- * - Besoin du token
- * - Content Type : multipart/form-data
- * - image / title / category=
- * - createElement .title
- * - createElement .image
- * - createElement .catergoy=categories
- * - addEventListener au submit( btn ajouter photo)
- * - une fois l'image, le titre et la categorie ajouter, lors du clique du bouton 'valider' il faut que l'image s'ajoute dans la modal gallery mais aussi dans
- * la gallery principale
+ * AJOUTER UNE PHOTO DEPUIS LA MODAL GALLERY
  */
-
-/**
- * Au clique sur la fleche permet le retour vers la modal gallery photo
- */
-const btnRetourArriere = () => {
-  //const btnRetour = document.querySelector(".retour-modal-main");
-  const btnRetour = document.getElementById("retour");
-  console.log(btnRetour)
-  const modalMain = document.querySelector(".modal-main");
-  const modalFormulaire = document.querySelector(".modal-formulaire");
-
-  btnRetour.addEventListener("click", (event) => {
-    console.log(event)
-    modalMain.style.display = "flex";
-    modalFormulaire.style.display = "none";
-  });
-};
-/**
- * Fonction qui permet de creer un POST
- */
-/*document.getElementById('add-photo-form').addEventListener("submit", async () => {*/
-const postTest = async () => {
-  try {
-    const token = window.localStorage.getItem("AuthToken");
-    console.log(token);
-    const jsonBody = body.JSON.strignify(body);
-    const response = await fetch("http://localhost:5678/api/works", {
-      METHOD: "POST",
-      headers: { Accept: "application/json", Authorization: `bearer ${token}` },
-      body: jsonBody,
-    });
-    console.log(response)
-  } catch (error) {
-    console.log("Erreur lors du chargement des données", error);
-  }
-};
-
-/**
- * fonction au chargement de la page
- */
-document.addEventListener("DOMContentLoaded", async () => {
-  works = await getWorks();
-  insertWorksInTheDom();
+const ajoutNewPhoto = () => {
   const photoButton = document.querySelector(".photo-btn");
   const modalMain = document.querySelector(".modal-main");
   const modalFormulaire = document.querySelector(".modal-formulaire");
@@ -361,7 +313,219 @@ document.addEventListener("DOMContentLoaded", async () => {
   photoButton.addEventListener("click", () => {
     modalMain.style.display = "none";
     modalFormulaire.style.display = "flex";
-    
   });
+};
+
+/**
+ * CLICK SUR LA FLECHE QUI PERMET UN RETOUR A LA MODAL GALLERY
+ */
+const btnRetourArriere = () => {
+  const btnRetour = document.getElementById("retour");
+  console.log(btnRetour);
+  const modalMain = document.querySelector(".modal-main");
+  const modalFormulaire = document.querySelector(".modal-formulaire");
+
+  btnRetour.addEventListener("click", (event) => {
+    console.log(event);
+    //Affiche la modal principal
+    modalMain.style.display = "flex";
+    //cache le formulaire de la modal
+    modalFormulaire.style.display = "none";
+  });
+};
+
+
+/**
+ * MENU DEROULANT CATEGORIES
+ */
+const menuObjet = async () => {
+  //recupere la div
+  const divSelect = document.getElementById("selectCategory");
+  //creation balise select
+  const select = document.createElement("select");
+  //ajout des attribut id, name
+  select.id = "category";
+  select.name = "category";
+  select.required = true;
+  //Appelle de la fonction asynchrone getCategorie pour récupérer les categories
+  const categories = await getCategories();
+  //Creation et ajout d'un bouton vide au début du menu déroulant
+  const emptyOption = document.createElement("option");
+  select.appendChild(emptyOption);
+  divSelect.appendChild(select);
+  //Parcourt chaque categorie récupéré et création d'une option 
+  categories.forEach((category) => {
+    const option = document.createElement("option");
+    option.innerText = category.name;
+    option.setAttribute("value", category.id);
+    select.appendChild(option);
+  });
+};
+/**
+ * AFFICHAGE DE L'IMAGE SELECTIONNÉ
+ */
+const afficherImageFormulaire = () => {
+  const image = document.getElementById("image");
+  image.addEventListener("change", function (event) {
+    //récupere le premier fichier sélectionné par l'utilisateur
+    const file = event.target.files[0];
+    //Vérifie si un fichier a bien été sélectioné
+    if (file) {
+      //creer une nouvelle instance de FileReader pour lire le contenue du fichier
+      const reader = new FileReader();
+      //définit une fonction à éxéciter lorsque le ficher est chargé
+      reader.onload = function (e) {
+        const preview = document.getElementById("preview");
+        //met a jour la source de l'element preview avec le resultat de la lecture
+        preview.src = e.target.result;
+        //Affiche l'element en modifiant sont style
+        preview.style.display = "block";
+        //Element selectionner qui seront à masqué
+        const addPhoto = document.querySelector(".style-addphoto");
+        const iconePhoto = document.getElementById("icone-photo");
+        //Masque les élements
+        addPhoto.style.display = "none";
+        iconePhoto.style.display = "none";
+      };
+      //lit le contenue du fichier en tant qu'URL de données
+      reader.readAsDataURL(file);
+    }
+  });
+};
+/**
+ * VERIFICATION DES CHAMPS DU FORMULAIRE
+ *
+ */
+const checkFormValid = () => {
+  // Récupere les élements du formulaire à vérifier
+  const imageInput = document.getElementById("image");
+  const titleInput = document.getElementById("title");
+  const categorySelect = document.getElementById("category");
+
+  // Vérifie que les criteres de l'image sont remplis
+  if (imageInput.files) {
+    //Recupere le fichier selectionné
+    const file = imageInput.files[0];
+    //Définit le type d'images valides
+    const validImageExtension = ["image/jpeg", "image/jpg", "image/png"];
+    //Taille maximal du fichier 4Mo
+    const maxSize = 4 * 1024 * 1024; 
+    //Type du fichier selectionné
+    const fileType = file.type;
+    //Taille du fichier selectionné
+    const fileSize = file.size;
+
+    //Vérifie si le fichier a un type valide et une taille inferieur ou égale a 4Mo
+    const fileValid = validImageExtension.includes(fileType) && fileSize <= maxSize;
+    //Vérifie si le champ du titre n'est pas vide
+    const titleValid = titleInput.value !== "";
+    //Vérifie si une catégorie est selectionné
+    const categoryValid = categorySelect.value !== "";
+    //Si tous les champs sont rempliqs, applique la modification de couleur du bouton
+    if (fileValid && titleValid && categoryValid) {
+      checkImage(); //applique la modification du bouton valider
+    }
+  }
+};
+
+/**
+ * MODIFICATION DU STYLE DU BOUTON SI LES ÉLEMENTS DU FORMULAIRE SONT VALIDE
+ */
+
+const checkImage = () => {
+  const colorButton = document.getElementById("valid-image");
+  colorButton.style.backgroundColor = "#1D6154";
+};
+
+/**
+ * RESET DU FORMULAIRE APRÉS AJOUT D'UNE IMAGE
+ */
+const resetForm = () => {
+  //Récupére le formulaire 
+  const form = document.getElementById("add-photo");
+  //Réinitialisation du formualire 
+  form.reset(); 
+
+  const preview = document.getElementById("preview");
+    if (preview) {
+      preview.style.display = "none"
+      preview.src = "#"
+    }
+
+  const icon = document.getElementById("icone-photo");
+  if (icon) {
+    icon.style.display = "flex";
+  }
+  const label = document.querySelector(".style-addphoto");
+  if (label) {
+    label.style.display = "flex";
+  }
+};
+/**
+ * AJOUT ECOUTEURS D'EVENEMENTS AUX ELEMENTS DU FORMULAIRE 
+ */
+const listenerForElement = () => {
+  document.getElementById("image").addEventListener("change", checkFormValid);
+  document.getElementById("title").addEventListener("input", checkFormValid);
+  document.getElementById("category").addEventListener("change", checkFormValid);
+}
+/**
+ * VALIDATION D'AJOUT D'IMAGE => RETOUR VERS LA MODAL GALLERY
+ */
+
+const validationPhoto = () => {
+  const modalMain = document.querySelector(".modal-main");
+  const modalFormulaire = document.querySelector(".modal-formulaire");
+    //Affiche la modal principal
+    modalMain.style.display = "flex";
+    //cache le formulaire de la modal
+    modalFormulaire.style.display = "none";
+};
+
+/**
+ * FONTION QUI CREER UN POST VERS L'API
+ */
+
+const postPhoto = () => {
+  const form = document.getElementById("add-photo");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    try {
+      const token = window.localStorage.getItem("AuthToken");
+      console.log(token);
+      const response = await fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
+      console.log(response);
+      works = await getWorks();
+      insertWorksInTheDom();
+      afficherWorksModal();
+      validationPhoto();
+      resetForm();
+    } catch (error) {
+      console.log("Erreur lors du chargement des données", error);
+    }
+  });
+};
+/**
+ * AU CHARGEMENT DE LA PAGE
+ */
+document.addEventListener("DOMContentLoaded", async () => {
+  works = await getWorks();
+  categories = await getCategories();
+  insertCategoriesInTheDom();
+  insertWorksInTheDom();
   btnRetourArriere();
+  await menuObjet();
+  ajoutNewPhoto();
+  afficherImageFormulaire();
+  listenerForElement();
+  //testButton();
+  postPhoto();
 });
