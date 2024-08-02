@@ -303,6 +303,7 @@ header li a:active {
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.3);
+	z-index: 999;
 }
 
 .modal-wrapper{
@@ -454,13 +455,26 @@ header li a:active {
 .ajout-photo{
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	background-color: #e8f1f6;
 	width: 420px;
 	height: 169px;
+	padding-top: 15px;
 }
-.ajout-photo i.fa-solid {
+.ajout-photo i,
+.ajout-photolabel,
+.ajout-photo span{
+	flex: 1;
+	text-align: center;
+}
+.ajout-photo span {
+	padding-top: 5px;
+	color: #444444;
+	font-size: 10px;
+
+}
+.ajout-photo i {
 	font-size: 76px;
 	color: #B9C5CC;
 	margin-bottom: 5px;
@@ -480,7 +494,7 @@ header li a:active {
 	font-size: 14px;
 	text-align: center;
 	border-radius: 50px;
-	margin-bottom: 30px;
+	margin-top: 10px;
 }
 .custom-label{
 	margin-bottom: 10px;
@@ -524,7 +538,7 @@ header li a:active {
 /* mode Edition  headdband noir */
 .mode-edition{
 	position: fixed;
-	z-index: 999;
+	z-index: 998;
 	justify-content: center;
 	align-items: center;
 	background: #000000;

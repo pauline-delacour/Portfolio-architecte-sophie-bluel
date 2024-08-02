@@ -313,6 +313,7 @@ const ajoutNewPhoto = () => {
   photoButton.addEventListener("click", () => {
     modalMain.style.display = "none";
     modalFormulaire.style.display = "flex";
+    resetForm();
   });
 };
 
@@ -383,9 +384,11 @@ const afficherImageFormulaire = () => {
         //Element selectionner qui seront à masqué
         const addPhoto = document.querySelector(".style-addphoto");
         const iconePhoto = document.getElementById("icone-photo");
+        const span = document.querySelector(".extension-image");
         //Masque les élements
         addPhoto.style.display = "none";
         iconePhoto.style.display = "none";
+        span.style.display = "none";
       };
       //lit le contenue du fichier en tant qu'URL de données
       reader.readAsDataURL(file);
@@ -456,6 +459,10 @@ const resetForm = () => {
   if (icon) {
     icon.style.display = "flex";
   }
+  const span = document.querySelector(".extension-image");
+  if (span) {
+    span.style.display ='inline';
+  }
   const label = document.querySelector(".style-addphoto");
   if (label) {
     label.style.display = "flex";
@@ -507,7 +514,6 @@ const postPhoto = () => {
       insertWorksInTheDom();
       afficherWorksModal();
       validationPhoto();
-      resetForm();
     } catch (error) {
       console.log("Erreur lors du chargement des données", error);
     }
