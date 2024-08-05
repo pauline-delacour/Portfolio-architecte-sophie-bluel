@@ -460,8 +460,8 @@ header li a:active {
 	background-color: #e8f1f6;
 	width: 420px;
 	height: 169px;
-	padding-top: 15px;
 }
+
 .ajout-photo i,
 .ajout-photolabel,
 .ajout-photo span{
@@ -478,6 +478,7 @@ header li a:active {
 	font-size: 76px;
 	color: #B9C5CC;
 	margin-bottom: 5px;
+	padding-top: 15px;
 }
 .ajout-photo input[type="file"] {
 	display: none;

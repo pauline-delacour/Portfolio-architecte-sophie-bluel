@@ -12,7 +12,7 @@ async function getWorks() {
   return works;
 }
 /**
- * CRÉATION DES ÉLÉMENTS QUI COMPOTE LA GALLERY
+ * CRÉATION DES ÉLÉMENTS QUE COMPORTE LA GALLERY
  */
 
 function insertWorksInTheDom() {
