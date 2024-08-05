@@ -14,7 +14,7 @@
 </head>
 <body>
 <header>
-	<div class="mode-edition" id="mode-edition" style="display: none;">
+	<div class="mode-edition" id="mode-edition">
 		<a href="#modeEdit" class="edition"><i class="fa-regular fa-pen-to-square" ></i> Mode édition</a>
 	</div>
 	<h1 class="header-top">Sophie Bluel <span>Architecte d'intérieur</span></h1>
@@ -43,7 +43,7 @@
 		<div class="projet">
 			<h2>Mes Projets</h2>
 			<a href="#modal1" class="js-modal" style="display: none;"><i class="fa-regular fa-pen-to-square" ></i> Modifier </a>
-			<aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="titlemodal" style="display: none;">
+			<div id="modal1" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="titlemodal" style="display: none;">
 				<div class="modal-main modal-wrapper js-modal-stop">
 					<button class="js-close-modal"><i class="fa-solid fa-xmark"></i></button>
 					<h3 id="titlemodal">Galerie Photo</h3>
@@ -52,7 +52,7 @@
 					</div>
 					<button class="photo-btn">Ajouter une photo</button>
 				</div>
-				<div class="modal-formulaire modal-wrapper js-modal-stop" style="display: none;">
+				<div class="modal-formulaire modal-wrapper js-modal-stop">
 					<button class="js-close-modal"><i class="fa-solid fa-xmark"></i></button>
 					<button  id="retour"  class="retour-modal-main"><i class="fa-solid fa-arrow-left"></i></button>
 					<h3>Ajout Photo</h3>
@@ -63,7 +63,8 @@
 							<label class="style-addphoto" for="image">+ Ajouter photo</label>
 							<span class="extension-image">jpg, png : 4mo max</span>
 							<input type="file" id="image" name="image" accept="image/*" required>
-							<img id="preview" src="#" alt="image preview" style="display: none;" >
+							<img id="preview" src="#" alt="image preview">
+							<span id="image-error" class="message-error">Veuillez ajouter une image</span>
 						</div>
 						<div>
 							<label class="custom-label" for="title">Titre </label>
@@ -71,13 +72,14 @@
 						</div>
 						<div id="selectCategory">
 							<label class="custom-label" for="category">Categories</label>
+							<select id="category" name="category"></select>
 						</div>
 						<div class="button-container">
 							<button id="valid-image" type="submit">Valider</button>
 						</div>
 					</form>
 				</div>
-			</aside>
+			</div>
 		</div>	
 		<div class="filtre">
 

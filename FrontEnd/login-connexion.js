@@ -7,7 +7,7 @@
  * @throws {Error}
  */
 
-async function userConnect(email, password) {
+const userConnect = async (email, password) => {
   const body = {
     email: email,
     password: password,
@@ -37,7 +37,7 @@ async function userConnect(email, password) {
  * @returns {void}
  */
 
-document.querySelector(".login-connexion").addEventListener("submit", async function (event) {
+document.querySelector(".login-connexion").addEventListener("submit", async (event) => {
     event.preventDefault();
     //Email récupéré depuis le champ du formulaire
     const email = document.getElementById("email").value;
@@ -63,7 +63,7 @@ document.querySelector(".login-connexion").addEventListener("submit", async func
       messageErreur = document.createElement("span");
       messageErreur.classList.add("error-message");
       messageErreur.innerText =
-        "Erreur dans l'identification ou le mot de passe ";
+        "Erreur dans l'identifiant ou le mot de passe ";
       formulaire.appendChild(messageErreur);
       console.log("echec de connexion");
     }
