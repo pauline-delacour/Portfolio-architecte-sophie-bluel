@@ -260,6 +260,12 @@ header li a:active {
 	height: 36px;
 	margin: auto;
 }
+.error-message{
+	display: flex;
+	justify-content: center;
+	color: red;
+	margin-top: 10px;
+}
 #navLogin{
 	font-weight: bold;
 }
@@ -501,10 +507,12 @@ header li a:active {
 	margin-bottom: 10px;
 }
 #preview{
+	display: none;
 	height: 169px;
 	width: 129px;
 }
 .modal-formulaire {
+	display: none;
 	justify-content: center;
 	flex-direction: column;
 }
@@ -535,9 +543,13 @@ header li a:active {
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	margin-top: 10px;
 }
-
+#image-error {
+	display: none;
+	color: red;
+}
 /* mode Edition  headdband noir */
-.mode-edition{
+.mode-edition {
+	display: none;
 	position: fixed;
 	z-index: 998;
 	justify-content: center;
@@ -557,4 +569,23 @@ header li a:active {
 }
 .header-top {
 	margin-top: 20px;
+}
+
+/*footer*/
+footer {
+   display: flex;
+   position: absolute;
+   width: 100%;
+   left: 0;
+   background-color: #FFFFFF;
+}
+.footer {
+	bottom: 0;
+}
+footer nav {
+	margin-left: auto;
+	margin-right: 107px;
+}
+footer nav ul {
+	margin: 2em;
 }
