@@ -55,7 +55,7 @@ document.querySelector(".login-connexion").addEventListener("submit", async (eve
       const connexion = await userConnect(email, password);
 
       if (connexion) {
-        // document.querySelector('.js-modal').style.display ='inline';
+        // si connection , on est rediriger vers la page principal 
         window.location.href = "./index.html";
       }
     } catch (error) {

@@ -16,7 +16,6 @@ const getWorks = async () => {
  */
 
 const insertWorksInTheDom = () => {
-  // works = await getWorks();
   const worksContainer = document.querySelector(".gallery");
   worksContainer.innerHTML = "";
   for (let i = 0; i < works.length; i++) {
@@ -111,7 +110,7 @@ const filterCategorie = (catId) => {
     const figureElement = document.createElement("figure");
     const imageElement = document.createElement("img");
     imageElement.src = article.imageUrl;
-    const titreElement = document.createElement("figcaption");
+    const titreElement = document.createElement("figcaption"); 
     titreElement.innerText = article.title;
     figureElement.appendChild(imageElement);
     figureElement.appendChild(titreElement);
@@ -132,7 +131,7 @@ const filterCategorie = (catId) => {
 
 let modal = null;
 /**
- *fFONCTION QUI PERMET D'OUVRIR LA MODAL
+ *FONCTION QUI PERMET D'OUVRIR LA MODAL
  * @param {e}
  */
 const openModal = (e) => {
