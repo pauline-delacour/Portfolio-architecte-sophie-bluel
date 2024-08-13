@@ -233,6 +233,7 @@ const closeModal =  (e) => {
     wrapper.removeEventListener("click", stopPropagation);
   });
   modal = null;
+  resetForm();
 };
 /**
  *EMPECHER DE QUITTER LA MODAL AU CLICK A L'INTERIEUR
